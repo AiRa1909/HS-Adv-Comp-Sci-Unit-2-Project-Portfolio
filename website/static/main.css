@@ -1,5 +1,17 @@
 body {
-    background: #ede0d4;
+    background: #f5ebe0;
+}
+
+.temps {
+    font-family: "Lucida Console", monospace;
+    font-size: 50px;
+    color: black;
+}
+
+.htemps {
+    font-family: "Lucida Console", monospace;
+    font-size: 50px;
+    color: #7f5539;
 }
 
 #credits {
@@ -29,7 +41,15 @@ body {
     color: #ede0d4;
     letter-spacing: 2px;
     word-spacing: 2px;
-    background:#7f5539;
+    background:#073b4c;
     padding: 15px;
+}
+
+#warning {
+    color: red;
+}
+
+#actual temps {
+    color: red;
 }
 

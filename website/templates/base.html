@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="refresh" content="1">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='Logo.png') }}">
     <title>{% block title %}TempRead{% endblock %}</title>
@@ -12,6 +13,25 @@
     <h2 id="banner">Made by Aisyah Rasyidin</h2>
 </div>
 <h1 id="title">Temperature:</h1>
+<div id="actual_temps">
+    <div id="celsius">
+        <h2 class="htemps">Celsius: </h2>
+        <h2 class="temps">{{ c }}</h2>
+    </div>
+    <div id="fahrenheit">
+        <h2 class="htemps">Fahrenheit: </h2>
+        <h2 class="temps">{{ f }}</h2>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for m in messages %}
+      <p id="warning">{{ m }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 </body>
+
 </html>
 
