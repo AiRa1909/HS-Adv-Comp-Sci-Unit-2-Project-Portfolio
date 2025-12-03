@@ -1,23 +1,22 @@
-from meteostat import Point, Hourly
-from datetime import datetime
-
+import requests
 
 def read_temperature():
-    place = Point(52.9389, -1.1981)
+    url = "https://api.open-meteo.com/v1/forecast"
+    params = {
+        "latitude": 52.9540,
+        "longitude": 1.1550,
+        "current_weather": True
+    }
+    r = requests.get(url, params=params)
+    data = r.json()
+    temp_c = str(data["current_weather"]["temperature"])
 
-    now = datetime.now()
-    data = Hourly(place, now, now).fetch()
-
-    temp_list = list(data['temp'])
-    temp_c = float(temp_list[0])
-
-    with open("sensor.txt", "w") as f:
-        f.write(f"t={int(temp_c * 1000)}\n")
+    try:
+        with open("sensor.txt", "w") as f:
+            f.write(temp_c)
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
     with open("sensor.txt", "r") as f:
-        databack = f.readline().strip().split("=")[1]
-
-    c = float(databack) / 1000
-    f = c * 9 / 5 + 32
-
-    return c,f
+        celsius = f.read()
+        return celsius
