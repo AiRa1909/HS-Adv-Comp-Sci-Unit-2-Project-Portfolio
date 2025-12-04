@@ -11,6 +11,13 @@
 <div>
     <h2 class="banner">Made by Aisyah Rasyidin | <span class="banner" id="credits">All Temperatures from Open Meteo</span></h2>
 </div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for m in messages %}
+      <p id="warning">{{ m }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <h1 id="title">Temperature in Nottingham:</h1>
 <div id="actual_temps">
     <div id="celsius">
@@ -22,13 +29,6 @@
         <h2 class="temps">{{ f }}</h2>
     </div>
 </div>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for m in messages %}
-      <p id="warning">{{ m }}</p>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 </body>
 
 </html>

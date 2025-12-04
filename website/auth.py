@@ -3,11 +3,13 @@ from website.stuff import read_temperature
 
 auth = Blueprint('auth', __name__)
 
-@auth.route("/temperature", methods=["GET"])
+@auth.route("/")
 def temperature():
     c = float(read_temperature())
-    if c > 75:
-        flash("TOO HOTT!!!")
+    if 25 < c and 28 > c:
+        flash("WARNING! Heatwave Temperatures Reached")
+    elif c > 40:
+        flash("WARNING! Highest Heatwave Temperatures Reached!")
     else:
         pass
 
