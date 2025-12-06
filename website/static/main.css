@@ -3,6 +3,7 @@
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
+/* defines / controls the steps in the CSS flashing animation sequence */
 
 body {
     background: #f5ebe0;
@@ -14,6 +15,8 @@ body {
     color: black;
     text-align: center;
 }
+
+/* apply to the CLASS "temps" */
 
 .htemps {
     font-family: "Lucida Console", monospace;
@@ -33,6 +36,9 @@ body {
 #credits {
     font-style: italic;
 }
+
+/* apply to the ID "credits" */
+
 
 #actual_temps {
     justify-content: center;
@@ -71,6 +77,8 @@ body {
     font-weight: bold;
     font-style: italic;
     animation: flash 1s infinite;
+    /* apply the predefined animation sequence to warning ID with 1 second duration for forever */
+
 }
 
 

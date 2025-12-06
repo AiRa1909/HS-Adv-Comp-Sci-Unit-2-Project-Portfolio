@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="refresh" content="5">
+    <!-- This is what allows the web page to self update -->
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <!-- links the css stylesheet to this template to be able to achieve the SRS "The web page follows minimalistic design"-->
     <link rel="icon" href="{{ url_for('static', filename='Logo.png') }}">
+    <!-- sets the favicon -->
     <title>{% block title %}TempRead{% endblock %}</title>
+    <!-- sets the tab title. There is some Jinja2 here as this makes the title changeable IF another web page existed for this application, that would extend this html template. But it's just here now to display knowledge of that-->
 </head>
 <body>
 <div>
     <h2 class="banner">Made by Aisyah Rasyidin | <span class="banner" id="credits">All Temperatures from Open Meteo</span></h2>
+    <!-- gives credit -->
 </div>
 {% with messages = get_flashed_messages() %}
   {% if messages %}
+<!-- checks if we're getting any flashed messages. And if we are, then:-->
     {% for m in messages %}
       <p id="warning">{{ m }}</p>
+<!-- show the message -->
     {% endfor %}
   {% endif %}
 {% endwith %}
@@ -23,6 +31,7 @@
     <div id="celsius">
         <h2 class="htemps">Celsius: </h2>
         <h2 class="temps"> {{ c }}</h2>
+        <!-- the double brackets specify python parameter that was passed -->
     </div>
     <div id="fahrenheit">
         <h2 class="htemps">Fahrenheit: </h2>
